@@ -17,7 +17,7 @@
 
 Here's a simple example to get you started with Table:
 
-````jsx
+```jsx
 import { useState } from "react";
 import "./App.css";
 import AppTable from "./Component/AppTable/AppTable";
@@ -210,18 +210,21 @@ function App() {
 }
 
 export default App;
+```
+
+```js
 
 # Data Structure
 
 Headers
 
 const headers = {
-  full_name: "Customer Name",
-  phone_number: "Phone Number",
-  "care_manager.full_name": "Care Manager",
-  sentiment_score: "Sentiment Score",
-  last_called_date: "Last Call",
-  next_follow_up: "Next Follow-up",
+full_name: "Customer Name",
+phone_number: "Phone Number",
+"care_manager.full_name": "Care Manager",
+sentiment_score: "Sentiment Score",
+last_called_date: "Last Call",
+next_follow_up: "Next Follow-up",
 };
 
 The key is the property in body data.
@@ -231,43 +234,45 @@ The value is the column label displayed in the table.
 Body
 
 const body = [
-  {
-    id: 78,
-    full_name: "Senthil R",
-    phone_number: "+919500154950",
-    care_manager: { id: 61, full_name: "Dhakshn" },
-    last_called_date: "2025-09-19T06:19:58.558900",
-    next_follow_up: "2025-09-21T00:00:00",
-    sentiment_score: "3.5 / 5",
-  },
-  // ...
+{
+id: 78,
+full_name: "Senthil R",
+phone_number: "+919500154950",
+care_manager: { id: 61, full_name: "Dhakshn" },
+last_called_date: "2025-09-19T06:19:58.558900",
+next_follow_up: "2025-09-21T00:00:00",
+sentiment_score: "3.5 / 5",
+},
+// ...
 ];
 
 Each item corresponds to a row in the table. Nested properties (like care_manager.full_name) should be defined in headers.
+```
+
+````js
 
 #Filters
 
 Filters are defined using the inputArr prop and powered by react-hook-form.
 
 const inputArr: InputGroup[] = [
-  {
-    wrapperClassName: "grid grid-cols-2 gap-4",
-    render: [
-      {
-        name: "care_manager",
-        filterLabel: "Care Manager",
-        type: "select",
-        options: [{ label: "CM1", value: "cm1" }],
-      },
-      {
-        name: "date_range",
-        filterLabel: "Date Range",
-        type: "date-range",
-      },
-    ],
-  },
+{
+wrapperClassName: "grid grid-cols-2 gap-4",
+render: [
+{
+name: "care_manager",
+filterLabel: "Care Manager",
+type: "select",
+options: [{ label: "CM1", value: "cm1" }],
+},
+{
+name: "date_range",
+filterLabel: "Date Range",
+type: "date-range",
+},
+],
+},
 ];
-
 
 # React + TypeScript + Vite
 
