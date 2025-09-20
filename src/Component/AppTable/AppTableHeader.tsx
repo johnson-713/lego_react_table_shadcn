@@ -1,6 +1,6 @@
-import { Checkbox } from "@/components/ui/checkbox";
-import { TableHead, TableRow } from "../components/ui/table";
-import { TableHeader } from "../components/ui/table";
+import { Checkbox } from "@/Component/ui/checkbox";
+import { TableHead, TableRow } from "../ui/table";
+import { TableHeader } from "../ui/table";
 import {
   type IAppTableAction,
   type IAppTableBody,
@@ -12,11 +12,15 @@ const AppTableHeaders = ({
   actions,
   selectable,
   body,
+  tableHeaderClassName = "",
+  checkboxClassName = "",
 }: {
   headersToMap: string[];
   actions?: IAppTableAction[];
   selectable?: Selectable;
   body: IAppTableBody[];
+  tableHeaderClassName?: string;
+  checkboxClassName?: string;
 }) => {
   const handleSelectAll = (data: IAppTableBody[]) => {
     const isSelectAll = selectable?.select?.length === data?.length;
@@ -31,21 +35,21 @@ const AppTableHeaders = ({
 
   const isAllSelected = selectable?.select?.length === body?.length;
 
-  //rgba(255, 229, 246, 1)
   return (
-    <TableHeader className={` bg-[#FFE5F6] ${""}`}>
+    <TableHeader className={`bg-[#FFE5F6] ${tableHeaderClassName}`}>
       <TableRow className="rounded-t-[8px]">
         {selectable && (
           <TableHead className="px-[10px]" onClick={(e) => e.stopPropagation()}>
             <Checkbox
               onCheckedChange={() => handleSelectAll(body)}
               checked={isAllSelected}
+              className={checkboxClassName}
             />
           </TableHead>
         )}
         {headersToMap.map((header, ind) => (
           <TableHead
-            className="p-[17px] text-primary font-[600] bg-[#FFE5F6]"
+            className="p-[17px] text-primary font-[600] "
             key={`${header}-${ind}`}
           >
             {header}

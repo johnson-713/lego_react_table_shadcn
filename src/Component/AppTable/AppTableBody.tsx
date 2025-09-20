@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { TableCell, TableRow, TableBody } from "@/components/ui/table";
+import { TableCell, TableRow, TableBody } from "@/Component/ui/table";
 import type { IAppTableBody, IAppTableAction, Selectable } from "./types";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Checkbox } from "@/Component/ui/checkbox";
 import React from "react";
 
 const NoData: React.FC<{ colSpan: number }> = ({ colSpan }) => (
@@ -31,6 +31,7 @@ const AppTableBody = ({
   customValueRender,
   selectable,
   onRowClick,
+  checkboxClassName = "",
 }: {
   body: IAppTableBody[];
   keysToAccessObjects: string[];
@@ -41,6 +42,7 @@ const AppTableBody = ({
   };
   selectable?: Selectable;
   onRowClick?: (row: IAppTableBody) => void;
+  checkboxClassName?: string;
 }) => {
   const getRowValueFromHeader = (row: any, header: string) => {
     if (customValueRender?.[header]) {
@@ -93,6 +95,7 @@ const AppTableBody = ({
               <Checkbox
                 onCheckedChange={(e) => handleSelected(e, row, selectable)}
                 checked={selectable?.select?.some((sel) => sel?.id == row?.id)}
+                className={checkboxClassName}
               />
             </TableCell>
           )}
